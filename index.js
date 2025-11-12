@@ -8,16 +8,36 @@ import bcrypt from "bcrypt";
 import bodyParser from "body-parser";
 
 dotenv.config(); // load .env
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 // app.use(cors());
-app.use(cors({
-  origin: "https://vercel-frontend7.vercel.app", // your frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));    
+// app.use(cors({
+//   origin: "https://vercel-frontend7.vercel.app", // your frontend domain
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true
+// }));    
+const allowedOrigins = [
+  process.env.FRONTEND_URL_LOCAL,
+  process.env.FRONTEND_URL_PROD
+];
 
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin (Postman, curl)
+    if(!origin) return callback(null, true);
+
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = `CORS policy: ${origin} not allowed`;
+      return callback(new Error(msg), false);
+    }
+
+    return callback(null, true);
+  },
+  credentials: true
+}));
+
+app.use(express.json());
 app.use(bodyParser.json());
 //  const URL = process.env.MONGODB_URL;
 

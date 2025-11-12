@@ -13,10 +13,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 // app.use(cors());
 app.use(cors({
-  origin: "https://vercel-frontend7.vercel.app/", // your frontend domain
+  origin: "https://vercel-frontend7.vercel.app", // your frontend domain
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
-}));
+}));    
+
 app.use(bodyParser.json());
 //  const URL = process.env.MONGODB_URL;
 

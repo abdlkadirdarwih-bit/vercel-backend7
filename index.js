@@ -71,15 +71,24 @@ const User = mongoose.model("User", userSchema);
 
 // 📝 Login Route
 app.post("/api/auth/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email: email.toLowerCase() });
-  if (!user) return res.status(400).json({ message: "Invalid email or password" });
+  try {
+    const { email, password } = req.body;
+    if (!email || !password)
+      return res.status(400).json({ message: "Email and password required" });
 
-  const valid = await user.validatePassword(password);
-  if (!valid) return res.status(400).json({ message: "Invalid email or password" });
+    const user = await User.findOne({ email: email.toLowerCase() });
+    if (!user) return res.status(400).json({ message: "Invalid email or password" });
 
-  res.json({ message: "Login successful", email: user.email });
+    const valid = await user.validatePassword(password);
+    if (!valid) return res.status(400).json({ message: "Invalid email or password" });
+
+    res.json({ message: "Login successful", email: user.email });
+  } catch (error) {
+    console.error("❌ Error in /api/auth/login:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 });
+
 
 // 🔐 Change Password Route
 app.post("/api/auth/change-password", async (req, res) => {

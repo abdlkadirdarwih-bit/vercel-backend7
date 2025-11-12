@@ -11,12 +11,12 @@ dotenv.config(); // load .env
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-app.use(cors());
-// app.use(cors({
-//   origin: "https://vercel-frontend-h2ep.vercel.app/", // your frontend domain
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true
-// }));
+// app.use(cors());
+app.use(cors({
+  origin: "https://vercel-frontend7.vercel.app/", // your frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 //  const URL = process.env.MONGODB_URL;
 
@@ -103,3 +103,7 @@ console.log(`✅ Server running on http://localhost:${PORT}`)
 //logincluster
 //username:login password login123
 //
+//login.ms
+//login7cluster
+//login7       login7123
+

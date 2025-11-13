@@ -119,7 +119,7 @@ app.post("/api/auth/register", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Backend is working ✅");
+  res.send("Backend is working success ✅");
 });
 
 // 🚀 Start Server

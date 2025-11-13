@@ -42,15 +42,27 @@ app.use(bodyParser.json());
 //  const URL = process.env.MONGODB_URL;
 
 // 🧭 Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/myapplog")
-//   , {
+// mongoose.connect("mongodb://127.0.0.1:27017/loginDB")
+// //   , {
+// //   useNewUrlParser: true,
+// //   useUnifiedTopology: true,
+// // }
+// // );
+// // mongoose.connect(URL)
+// .then(() => console.log("✅ Connected to MongoDB successfully"))
+// .catch(err => console.error("❌ MongoDB connection error:", err));
+
+
+ const URL = process.env.MONGODB_URL;
+//  {
 //   useNewUrlParser: true,
-//   useUnifiedTopology: true,
+//   useUnifiedTopology: true
 // }
-// );
-// mongoose.connect(URL)
+// mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(URL)
 .then(() => console.log("✅ Connected to MongoDB successfully"))
 .catch(err => console.error("❌ MongoDB connection error:", err));
+
 
 
 // 📄 User Model

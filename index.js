@@ -13,12 +13,12 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 // app.use(cors());
 // app.use(cors({
-//   origin: "https://vercel-frontend7.vercel.app", // your frontend domain
+//   origin: "https://vercel-frontend7-7dzn.vercel.app", // your frontend domain
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 //   credentials: true
 // }));    
 const allowedOrigins = [
-  process.env.FRONTEND_URL_LOCAL,
+  // process.env.FRONTEND_URL_LOCAL,
   process.env.FRONTEND_URL_PROD
 ];
 

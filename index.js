@@ -131,13 +131,13 @@ app.post("/api/auth/register", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Backend is working success ✅");
+  res.send("Backend is working success ");
 });
 
 // 🚀 Start Server
 app.listen(PORT, () =>
   //  console.log("✅ Server running on http://localhost:5000")
-console.log(` Server running on http://localhost:${PORT}`)
+console.log(`✅ Server running on http://localhost:${PORT}`)
 
 );
 

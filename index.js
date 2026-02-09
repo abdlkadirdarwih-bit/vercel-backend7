@@ -17,25 +17,26 @@ const app = express();
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 //   credentials: true
 // }));    
-const allowedOrigins = [
-  process.env.FRONTEND_URL_LOCAL,
-  process.env.FRONTEND_URL_PROD
-];
+app.use(cors());
+// const allowedOrigins = [
+//   process.env.FRONTEND_URL_LOCAL,
+//   process.env.FRONTEND_URL_PROD
+// ];
 
-app.use(cors({
-  origin: function(origin, callback){
-    // allow requests with no origin (Postman, curl)
-    if(!origin) return callback(null, true);
+// app.use(cors({
+//   origin: function(origin, callback){
+//     // allow requests with no origin (Postman, curl)
+//     if(!origin) return callback(null, true);
 
-    if(allowedOrigins.indexOf(origin) === -1){
-      const msg = `CORS policy: ${origin} not allowed`;
-      return callback(new Error(msg), false);
-    }
+//     if(allowedOrigins.indexOf(origin) === -1){
+//       const msg = `CORS policy: ${origin} not allowed`;
+//       return callback(new Error(msg), false);
+//     }
 
-    return callback(null, true);
-  },
-  credentials: true
-}));
+//     return callback(null, true);
+//   },
+//   credentials: true
+// }));
 
 app.use(express.json());
 app.use(bodyParser.json());

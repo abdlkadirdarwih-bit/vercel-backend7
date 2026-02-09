@@ -18,7 +18,7 @@ const app = express();
 //   credentials: true
 // }));    
 const allowedOrigins = [
-  // process.env.FRONTEND_URL_LOCAL,
+  process.env.FRONTEND_URL_LOCAL,
   process.env.FRONTEND_URL_PROD
 ];
 
@@ -137,7 +137,7 @@ app.get("/", (req, res) => {
 // 🚀 Start Server
 app.listen(PORT, () =>
   //  console.log("✅ Server running on http://localhost:5000")
-console.log(`✅ Server running on http://localhost:${PORT}`)
+console.log(` Server running on http://localhost:${PORT}`)
 
 );
 
